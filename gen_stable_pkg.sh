@@ -21,18 +21,18 @@ if [ "$1" -eq "pacman" ]; then
 fi
 
 fpm \
-  -m $FPM_MAINTAINER \
-  --vendor $FPM_VENDOR \
-  --license $FPM_LICENSE \
-  --category $FPM_CATEGORY \
-  --url $FPM_URL \
-  --description $FPM_DESCRIPTION \
+  -m "$FPM_MAINTAINER" \
+  --vendor "$FPM_VENDOR" \
+  --license "$FPM_LICENSE" \
+  --category "$FPM_CATEGORY" \
+  --url "$FPM_URL" \
+  --description "$FPM_DESCRIPTION" \
   --verbose \
   -s dir \
-  -t $1 \
+  -t "$1" \
   -n terasology \
-  -v $engineVersion \
-  -d $FPM_DEPENDENCY \
+  -v "$engineVersion" \
+  -d "$FPM_DEPENDENCY" \
   --prefix "/opt" \
   --force \
   -a all \
