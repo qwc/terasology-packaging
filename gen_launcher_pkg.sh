@@ -3,6 +3,10 @@
 source versionInfo.properties
 
 
+if [ "$1" -e ""]; then
+  echo "usage: <script> deb|rpm|pacman"
+fi
+
 
 fpm \
   -m "Marcel Otte <qwc+terasology@mmo.to>" \
@@ -10,14 +14,15 @@ fpm \
   --license "Apache 2.0" \
   --category "Games" \
   --url "http://terasology.org" \
-  --description "Terasology - open source voxel world, bleeding edge Omega release." \
+  --description "TerasologyLauncher - open source voxel world, launcher." \
   --verbose \
   -s dir \
-  -t deb \
-  -n terasology-unstable \
-  -v $engineVersion-$buildNumber \
+  -t $1 \
+  -n terasology-launcher \
+  -v $buildNumber \
   -d "openjdk-8-jre" \
+  -d "openjfx" \
   --prefix "/opt" \
   --force \
   -a all \
-  terasology
+  TerasologyLauncher
