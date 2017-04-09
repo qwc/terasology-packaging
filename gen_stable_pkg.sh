@@ -2,7 +2,8 @@
 
 source versionInfo.properties
 source variables.sh
-source variables_stable.sh
+
+FPM_DESCRIPTION="Terasology - open source voxel world."
 
 if [ -z "$1" ]; then
   echo "usage: <script> deb|rpm|pacman"
@@ -25,7 +26,7 @@ fpm \
   --license $FPM_LICENSE \
   --category $FPM_CATEGORY \
   --url $FPM_URL \
-  --description $FPM_DESC \
+  --description $FPM_DESCRIPTION \
   --verbose \
   -s dir \
   -t $1 \

@@ -2,7 +2,8 @@
 
 source versionInfo.properties
 source variables.sh
-source variables_unstable.sh
+
+FPM_DESCRIPTION="Terasology - open source voxel world, bleeding edge Omega release."
 
 if [ -z "$1" ]; then
   echo "usage: <script> deb|rpm|pacman"
