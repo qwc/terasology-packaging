@@ -10,14 +10,17 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-if [ "$1" -eq "deb" ]; then
+if [ "$1" == "deb" ]; then
   FPM_DEPENDENCY="openjdk-8-jre >= 8u40"
+  FPM_ARCH="all"
 fi
-if [ "$1" -eq "rpm" ]; then
+if [ "$1" == "rpm" ]; then
   FPM_DEPENDENCY="java-1.8.0-openjdk >= 1.8.0.40"
+  FPM_ARCH="x86_64"
 fi
-if [ "$1" -eq "pacman" ]; then
+if [ "$1" == "pacman" ]; then
   FPM_DEPENDENCY="jre8-openjdk >= 8.u40"
+  FPM_ARCH="all"
 fi
 
 fpm \
@@ -28,6 +31,7 @@ fpm \
   --url "$FPM_URL" \
   --description "$FPM_DESCRIPTION" \
   --verbose \
+  --log debug \
   -s dir \
   -t "$1" \
   -n terasology \
@@ -35,5 +39,5 @@ fpm \
   -d "$FPM_DEPENDENCY" \
   --prefix "/opt" \
   --force \
-  -a all \
+  -a "$FPM_ARCH" \
   terasology

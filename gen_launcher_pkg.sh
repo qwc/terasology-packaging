@@ -7,17 +7,20 @@ if [ -z "$1" ]; then
   echo "usage: <script> deb|rpm|pacman"
 fi
 
-if [ "$1" -eq "deb" ]; then
+if [ "$1" == "deb" ]; then
   FPM_DEPENDENCY="openjdk-8-jre >= 8u40"
   FPM_DEP2="openjfx"
+  FPM_ARCH="all"
 fi
-if [ "$1" -eq "rpm" ]; then
+if [ "$1" == "rpm" ]; then
   FPM_DEPENDENCY="java-1.8.0-openjdk >= 1.8.0.40"
   FPM_DEP2=""
+  FPM_ARCH="x86_64"
 fi
-if [ "$1" -eq "pacman" ]; then
+if [ "$1" == "pacman" ]; then
   FPM_DEPENDENCY="jre8-openjdk >= 8.u40"
   FPM_DEP2="java-openjfx"
+  FPM_ARCH="all"
 fi
 
 
@@ -29,6 +32,7 @@ fpm \
   --url "$FPM_URL" \
   --description "TerasologyLauncher - open source voxel world, launcher." \
   --verbose \
+  --log debug \
   -s dir \
   -t "$1" \
   -n terasology-launcher \
@@ -37,5 +41,5 @@ fpm \
   -d "$FPM_DEP2" \
   --prefix "/opt" \
   --force \
-  -a all \
+  -a "$FPM_ARCH" \
   TerasologyLauncher
