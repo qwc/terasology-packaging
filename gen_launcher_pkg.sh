@@ -3,7 +3,7 @@
 source versionInfo.properties
 source variables.sh
 
-if [ "$1" -e ""]; then
+if [ "$1" -eq "" ]; then
   echo "usage: <script> deb|rpm|pacman"
 fi
 
