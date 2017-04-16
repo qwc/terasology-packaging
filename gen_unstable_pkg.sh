@@ -35,5 +35,6 @@ fpm \
   -d "$FPM_DEPENDENCY" \
   --prefix "/opt" \
   --force \
+  --rpm-autoreq \
   -a all \
   terasology
