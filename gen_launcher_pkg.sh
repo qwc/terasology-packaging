@@ -22,19 +22,19 @@ fi
 
 
 fpm \
-  -m $FPM_MAINTAINER \
-  --vendor $FPM_VENDOR \
-  --license $FPM_LICENSE \
-  --category $FPM_CATEGORY \
-  --url $FPM_URL \
+  -m "$FPM_MAINTAINER" \
+  --vendor "$FPM_VENDOR" \
+  --license "$FPM_LICENSE" \
+  --category "$FPM_CATEGORY" \
+  --url "$FPM_URL" \
   --description "TerasologyLauncher - open source voxel world, launcher." \
   --verbose \
   -s dir \
-  -t $1 \
+  -t "$1" \
   -n terasology-launcher \
-  -v $buildNumber \
-  -d $FPM_DEPENDENCY \
-  -d $FPM_DEP2 \
+  -v "$buildNumber" \
+  -d "$FPM_DEPENDENCY" \
+  -d "$FPM_DEP2" \
   --prefix "/opt" \
   --force \
   -a all \
