@@ -5,5 +5,7 @@ wget http://jenkins.terasology.org/job/DistroOmegaRelease/lastSuccessfulBuild/ar
 wget http://jenkins.terasology.org/job/DistroOmegaRelease/lastSuccessfulBuild/artifact/distros/omega/build/distributions/sha256sums.txt
 
 sha256sum -c sha256sums.txt
+# get version information
+wget http://jenkins.terasology.org/job/TerasologyStable/lastSuccessfulBuild/artifact/build/resources/main/org/terasology/version/versionInfo.properties
 
 unzip TerasologyOmega.zip -d terasology
