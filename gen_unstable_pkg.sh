@@ -48,3 +48,10 @@ fpm \
   -a "$FPM_ARCH" \
   opt \
   usr
+
+if [ -z "$SIGNING" ]; then
+  echo "Skipping signing."
+  exit 0
+fi
+gpg --import $SIGNING
+dpkg-sig -k $KEYNAME -s builder *.deb
