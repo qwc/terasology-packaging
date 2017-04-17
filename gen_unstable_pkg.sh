@@ -23,9 +23,8 @@ if [ "$1" == "pacman" ]; then
   FPM_ARCH="all"
 fi
 
-pushd root/usr/bin/
-ln -s ../../opt/terasology-unstable/run_linux.sh terasology
-popd
+cp terasology-unstable root/usr/bin/
+chmod +x root/usr/bin/terasology-unstable
 
 cp terasology-unstable.desktop root/usr/share/applications/
 
