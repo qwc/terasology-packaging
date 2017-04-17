@@ -49,9 +49,11 @@ fpm \
   opt \
   usr
 
-if [ -z "$SIGNING" ]; then
-  echo "Skipping signing."
-  exit 0
+if [ "$1" == "deb" ]; then
+  if [ -z "$SIGNING" ]; then
+    echo "Skipping signing."
+    exit 0
+  fi
+  gpg --import $SIGNING
+  dpkg-sig -k $KEYNAME -s builder *.deb
 fi
-gpg --import $SIGNING
-dpkg-sig -k $KEYNAME -s builder *.deb
