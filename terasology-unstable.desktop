@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Terasology
+Path=/opt/terasology-unstable
+Exec=/usr/bin/terasology-unstable
+Icon=terasology
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=tera
+Comment=Terasology - open source voxel world, bleeding edge version.

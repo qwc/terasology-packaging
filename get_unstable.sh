@@ -4,9 +4,11 @@ wget http://jenkins.terasology.org/job/DistroOmega/lastSuccessfulBuild/artifact/
 wget http://jenkins.terasology.org/job/DistroOmega/lastSuccessfulBuild/artifact/distros/omega/build/distributions/sha256sums.txt
 wget http://jenkins.terasology.org/job/DistroOmega/lastSuccessfulBuild/artifact/distros/omega/build/distributions/md5sums.txt
 
+echo "Checking sha256sum..."
 sha256sum -c sha256sums.txt
 # get version information
 wget http://jenkins.terasology.org/job/Terasology/lastSuccessfulBuild/artifact/build/resources/main/org/terasology/version/versionInfo.properties
 
 # unzip to directory to be able to provide additional data/information
-unzip TerasologyOmega.zip -d terasology
+unzip TerasologyOmega.zip -d root/opt/terasology-unstable
+rm TerasologyOmega.zip

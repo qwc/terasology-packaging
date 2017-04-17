@@ -23,6 +23,16 @@ if [ "$1" == "pacman" ]; then
   FPM_ARCH="all"
 fi
 
+pushd root/opt/terasology-launcher
+mv TerasologyLauncher/* .
+rm -rf TerasologyLauncher
+popd
+
+pushd root/usr/bin/
+ln -s ../../opt/terasology-launcher/bin/TerasologyLauncher terasology-launcher
+popd
+
+cp terasology-launcher.desktop root/usr/share/applications/
 
 fpm \
   -m "$FPM_MAINTAINER" \
@@ -33,13 +43,14 @@ fpm \
   --description "TerasologyLauncher - open source voxel world, launcher." \
   --verbose \
   --log debug \
+  -C root \
   -s dir \
   -t "$1" \
   -n terasology-launcher \
   -v "$buildNumber" \
   -d "$FPM_DEPENDENCY" \
   -d "$FPM_DEP2" \
-  --prefix "/opt" \
   --force \
   -a "$FPM_ARCH" \
-  TerasologyLauncher
+  opt \
+  usr

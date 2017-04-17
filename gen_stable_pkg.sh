@@ -23,6 +23,12 @@ if [ "$1" == "pacman" ]; then
   FPM_ARCH="all"
 fi
 
+pushd root/usr/bin/
+ln -s ../../opt/terasology/run_linux.sh terasology
+popd
+
+cp terasology.desktop root/usr/share/applications/
+
 fpm \
   -m "$FPM_MAINTAINER" \
   --vendor "$FPM_VENDOR" \
@@ -32,12 +38,13 @@ fpm \
   --description "$FPM_DESCRIPTION" \
   --verbose \
   --log debug \
+  -C root \
   -s dir \
   -t "$1" \
   -n terasology \
   -v "$engineVersion" \
   -d "$FPM_DEPENDENCY" \
-  --prefix "/opt" \
   --force \
   -a "$FPM_ARCH" \
-  terasology
+  opt \
+  usr
