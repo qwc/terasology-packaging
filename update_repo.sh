@@ -7,7 +7,7 @@ fi
 REPO=/srv/http/terasology.mmo.to/deb
 
 {
-  find . -name '*.deb' -exec cp '{}' $REPO/ \;
+  find . -name '*.deb' -exec cp -u -v '{}' $REPO/ \;
   pushd $REPO/
   apt-ftparchive packages . > Packages
   bzip2 -kf Packages
