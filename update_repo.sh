@@ -7,6 +7,7 @@ fi
 REPO=/srv/http/terasology.mmo.to/deb
 
 {
+  find . -iname '*unstable*.deb' -mtime +7 -exec rm {} \;
   find . -name '*.deb' -exec cp -u -v '{}' $REPO/ \;
   pushd $REPO/
   find . -iname '*unstable*.deb' -mtime +7 -exec rm {} \;
