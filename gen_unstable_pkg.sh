@@ -54,5 +54,5 @@ if [ "$1" == "deb" ]; then
     exit 0
   fi
   gpg --import $SIGNING
-  find . -iname '*.deb' -exec dpkg-sig -k $KEYNAME -s builder {}\;
+  find . -iname '*.deb' -exec dpkg-sig -k $KEYNAME -s builder {} \;
 fi
