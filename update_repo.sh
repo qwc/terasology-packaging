@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source variables.sh
+
 if [ -z "$KEYNAME" ]; then
   exit 1
 fi
